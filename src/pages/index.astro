@@ -1,11 +1,30 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
-<Layout>
-	<Welcome />
+<Layout title="Sprachimbiss - Vita Sarvirova | Online-Sprachunterricht" description="Professioneller Online-Sprachunterricht bei Vita Sarvirova. Bald verfügbar!">
+	<main class="hero">
+		<div class="hero-container">
+			<div class="hero-content">
+				<h1 class="hero-title">
+					<span class="title-main">Sprachimbiss</span>
+					<span class="title-sub">Vita Sarvirova</span>
+				</h1>
+				<p class="hero-description">
+					Professioneller Online-Sprachunterricht mit Leidenschaft und Expertise
+				</p>
+				<div class="coming-soon">
+					<div class="badge">Coming Soon</div>
+          <p class="coming-soon-text">Hier entsteht der Internetauftritt vom <br>Sprachimbiss Vita Sarvirova</p>
+				</div>
+			</div>
+			<div class="hero-decoration">
+				<div class="language-symbols">
+					<span class="symbol">🌍</span>
+					<span class="symbol">📚</span>
+					<span class="symbol">💬</span>
+				</div>
+			</div>
+		</div>
+	</main>
 </Layout>
