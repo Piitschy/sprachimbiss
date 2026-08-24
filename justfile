@@ -39,8 +39,8 @@ run:
 
 # Login to GitHub Container Registry
 login:
-    @echo "Logging in to GitHub Container Registry..."
-    @#!/usr/bin/env bash
+    #!/usr/bin/env bash
+    echo "Logging in to GitHub Container Registry..."
     read -p "Enter GitHub username: " username
     read -s -p "Enter GitHub personal access token: " token
     echo $token | docker login ghcr.io -u $username --password-stdin
@@ -60,16 +60,12 @@ pull:
     docker pull {{FULL_IMAGE_NAME}}
 
 # Run with custom tag
-[private]
-tag_check(tag):
+run-tagged tag:
     #!/usr/bin/env bash
     if [ -z "{{tag}}" ]; then
         echo "Please specify a tag: just run-tagged v1.0.0"
         exit 1
     fi
-
-run-tagged tag:
-    {{tag_check(tag)}}
     TAG="{{tag}}" just build
     docker run -p 4321:4321 --rm {{IMAGE_NAME}}:{{tag}}
 
@@ -99,10 +95,10 @@ stop-dev:
 
 # Show image info
 info:
-    @echo "Image: {{IMAGE_NAME}}"
-    @echo "Tag: {{TAG}}"
-    @echo "Full name: {{FULL_IMAGE_NAME}}"
     #!/usr/bin/env bash
+    echo "Image: {{IMAGE_NAME}}"
+    echo "Tag: {{TAG}}"
+    echo "Full name: {{FULL_IMAGE_NAME}}"
     if docker images {{IMAGE_NAME}}:{{TAG}} | grep -q {{TAG}}; then
         echo "Image exists locally"
         docker images {{IMAGE_NAME}}:{{TAG}}
