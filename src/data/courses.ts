@@ -3,6 +3,7 @@ export interface Course {
 	scheduleLabel: string;
 	scheduleLabelDe: string;
 	time?: string;
+	durationMinutes?: number;
 	title: string;
 	titleDe: string;
 	description: string;
@@ -15,6 +16,7 @@ export const courses: Course[] = [
 		scheduleLabel: 'ПОНЕДІЛОК АБО СЕРЕДА',
 		scheduleLabelDe: 'MONTAG ODER MITTWOCH',
 		time: '16:00 – 17:20',
+		durationMinutes: 80,
 		title: 'Граматичний розмовний гурток B1+/B2',
 		titleDe: 'Grammatischer Gesprächskurs B1+/B2',
 		description: 'Для тих, хто вже вчив B1+/B2 і під час розмови хотів би ширше використовувати набуті теоретичні знання. Тут не просто повторюють важливі конструкції, а вчаться автоматично використовувати їх у спонтанних розмовах на цікаві теми 🙂',
@@ -25,6 +27,7 @@ export const courses: Course[] = [
 		scheduleLabel: 'СЕРЕДА',
 		scheduleLabelDe: 'MITTWOCH',
 		time: '14:30 – 15:50',
+		durationMinutes: 80,
 		title: 'Розмовна група В1 (DTZ / telc)',
 		titleDe: 'Gesprächsgruppe B1 (DTZ / telc)',
 		description: 'Тренуємо опис картинок і діалоги у форматі іспитів DTZ / telc, комбінуючи з граматикою та вивченням слів. На учасників чекають корисні стратегії, багато говоріння та позитивна компанія ✨',
@@ -35,6 +38,7 @@ export const courses: Course[] = [
 		scheduleLabel: 'П’ЯТНИЦЯ',
 		scheduleLabelDe: 'FREITAG',
 		time: '15:00 – 16:20',
+		durationMinutes: 80,
 		title: 'В1+/В2 молодіжний розмовний гурток (до 25 років)',
 		titleDe: 'Jugendlicher Gesprächskurs B1+/B2 (bis 25 Jahre)',
 		description: 'За обговоренням актуальних тем з однолітками ти забудеш, що це урок німецької, і прокачаєш розмовні навички із задоволенням :) ☀️ Фокус на спонтанному говорінні, яке поєднується з граматикою та лексикою.',
