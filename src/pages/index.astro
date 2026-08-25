@@ -7,19 +7,19 @@ const courses = [
 		scheduleLabel: 'ПОНЕДІЛОК АБО СЕРЕДА',
 		time: '16:00 – 17:20',
 		title: 'Граматичний розмовний гурток B1+/B2',
-		description: 'Для тих, хто вже вчив B1+/B2, але під час розмови не може швидко застосовувати ці знання і почувається невпевнено. Вчимося автоматично використовувати важливі конструкції у спонтанних розмовах на цікаві теми.',
+		description: 'Для тих, хто вже вчив B1+/B2 і під час розмови хотів би ширше використовувати набуті теоретичні знання. Тут не просто повторюють важливі конструкції, а вчаться автоматично використовувати їх у спонтанних розмовах на цікаві теми 🙂',
 	},
 	{
 		scheduleLabel: 'СЕРЕДА',
 		time: '14:30 – 15:50',
-		title: 'Розмовна група B1 (DTZ / telc)',
-		description: 'Тренуємо опис картинок і діалоги у форматі іспитів DTZ / telc, комбінуючи з граматикою та вивченням слів. Корисні стратегії, багато говоріння та позитивна компанія ✨',
+		title: 'Розмовна група В1 (DTZ / telc)',
+		description: 'Тренуємо опис картинок і діалоги у форматі іспитів DTZ / telc, комбінуючи з граматикою та вивченням слів. На учасників чекають корисні стратегії, багато говоріння та позитивна компанія ✨',
 	},
 	{
 		scheduleLabel: 'П’ЯТНИЦЯ',
 		time: '15:00 – 16:20',
-		title: 'Молодіжний розмовний гурток B1+/B2 (до 25 років)',
-		description: 'Обговорюємо актуальні теми з однолітками і прокачуємо розмовні навички із задоволенням! ☀️ Фокус на спонтанному говорінні, яке поєднується з граматикою та лексикою.',
+		title: 'В1+/В2 молодіжний розмовний гурток (до 25 років)',
+		description: 'За обговоренням актуальних тем з однолітками ти забудеш, що це урок німецької, і прокачаєш розмовні навички із задоволенням :) ☀️ Фокус на спонтанному говорінні, яке поєднується з граматикою та лексикою.',
 	},
 	{
 		scheduleLabel: 'З СЕРЕДИНИ ВЕРЕСНЯ',
@@ -41,7 +41,7 @@ const courses = [
 			<section class="schedule-section" aria-labelledby="schedule-heading">
 				<div class="section-heading">
 					<p class="eyebrow">Разом говоримо впевненіше</p>
-					<h2 id="schedule-heading">Розклад занять</h2>
+					<h2 id="schedule-heading">Розклад групових занять на вересень</h2>
 				</div>
 				<div class="course-grid">
 					{courses.map((course) => <CourseCard {...course} />)}
@@ -51,9 +51,9 @@ const courses = [
 			<section class="price-panel" aria-labelledby="price-heading">
 				<div>
 					<p class="eyebrow">Просто та прозоро</p>
-					<h2 id="price-heading">Вартість години – 10 євро.</h2>
+					<h2 id="price-heading">Вартість години уроку – 10 євро.</h2>
 				</div>
-				<p>При оплаті абонементом – знижки!</p>
+				<p>При оплаті абонементом діють знижки!</p>
 			</section>
 
 			<section class="contact-panel" aria-labelledby="contact-heading">
@@ -61,15 +61,16 @@ const courses = [
 					<p class="eyebrow">Перший крок</p>
 					<h2 id="contact-heading">Забронюйте собі місце на обраному гуртку прямо зараз!</h2>
 					<p>Напишіть мені назву гуртка в особисті повідомлення.</p>
+					<p>З жовтня запускатимемо й інші формати та заняття – зв'яжіться зі мною, щоб знайти ідеальну пропозицію саме для Вас🇩🇪</p>
 					<a class="primary-link" href="https://t.me/vitasilver">Написати в Telegram <span aria-hidden="true">↗</span></a>
 				</div>
 				<div class="contact-details">
 					<p class="contact-prompt">Напишіть мені повідомлення – підберемо ідеальний курс для вас! 💜</p>
 					<ul>
 						<li><span>Telegram</span><a href="https://t.me/vitasilver">@vitasilver</a></li>
-						<li><span>E-Mail</span><a href="mailto:vitasarvirova@gmail.com">vitasarvirova@gmail.com</a></li>
+						<li><span>E-Mail</span><a href="mailto:vita@sprachimbiss.de">vita@sprachimbiss.de</a></li>
 						<li><span>Website</span><a href="https://sprachimbiss.de/">sprachimbiss.de</a></li>
-						<li><span>WhatsApp / Tel.</span><a href="tel:+4915203977315">+4915203977315</a></li>
+						<li><span>Тел. (WhatsApp)</span><a href="tel:+4915203977315">+4915203977315</a></li>
 					</ul>
 				</div>
 			</section>
