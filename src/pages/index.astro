@@ -1,30 +1,272 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import CourseCard from '../components/CourseCard.astro';
+
+const courses = [
+	{
+		scheduleLabel: 'ПОНЕДІЛОК АБО СЕРЕДА',
+		time: '16:00 – 17:20',
+		title: 'Граматичний розмовний гурток B1+/B2',
+		description: 'Для тих, хто вже вчив B1+/B2, але під час розмови не може швидко застосовувати ці знання і почувається невпевнено. Вчимося автоматично використовувати важливі конструкції у спонтанних розмовах на цікаві теми.',
+	},
+	{
+		scheduleLabel: 'СЕРЕДА',
+		time: '14:30 – 15:50',
+		title: 'Розмовна група B1 (DTZ / telc)',
+		description: 'Тренуємо опис картинок і діалоги у форматі іспитів DTZ / telc, комбінуючи з граматикою та вивченням слів. Корисні стратегії, багато говоріння та позитивна компанія ✨',
+	},
+	{
+		scheduleLabel: 'П’ЯТНИЦЯ',
+		time: '15:00 – 16:20',
+		title: 'Молодіжний розмовний гурток B1+/B2 (до 25 років)',
+		description: 'Обговорюємо актуальні теми з однолітками і прокачуємо розмовні навички із задоволенням! ☀️ Фокус на спонтанному говорінні, яке поєднується з граматикою та лексикою.',
+	},
+	{
+		scheduleLabel: 'З СЕРЕДИНИ ВЕРЕСНЯ',
+		title: 'Групові заняття для дітей 10–12 років (рівень ±A2)',
+		description: 'Працюємо насамперед над лексикою та розмовними навичками. Це вже більш системний курс: із домашніми завданнями, вправами та бажаним регулярним відвідуванням. 📚',
+	},
+];
 ---
 
-<Layout title="Sprachimbiss - Vita Sarvirova | Online-Sprachunterricht" description="Professioneller Online-Sprachunterricht bei Vita Sarvirova. Bald verfügbar!">
-	<main class="hero">
-		<div class="hero-container">
-			<div class="hero-content">
-				<h1 class="hero-title">
-					<span class="title-main">Sprachimbiss</span>
-					<span class="title-sub">Vita Sarvirova</span>
-				</h1>
-				<p class="hero-description">
-					Professioneller Online-Sprachunterricht mit Leidenschaft und Expertise
-				</p>
-				<div class="coming-soon">
-					<div class="badge">Coming Soon</div>
-          <p class="coming-soon-text">Hier entsteht der Internetauftritt vom <br>Sprachimbiss Vita Sarvirova</p>
+<Layout lang="uk" title="Курси німецької мови | Sprachimbiss" description="Розмовні курси німецької мови для дорослих та дітей із Vita Sarvirova.">
+	<main class="courses-page">
+		<div class="courses-container">
+			<header class="page-intro">
+				<p class="eyebrow">Sprachimbiss · Deutsch mit Genuss</p>
+				<h1>Курси німецької мови <span>для дорослих та дітей</span></h1>
+				<p class="intro-message">Запускаємо нові формати щомісяця – знайди свій!</p>
+			</header>
+
+			<section class="schedule-section" aria-labelledby="schedule-heading">
+				<div class="section-heading">
+					<p class="eyebrow">Разом говоримо впевненіше</p>
+					<h2 id="schedule-heading">Розклад занять</h2>
 				</div>
-			</div>
-			<div class="hero-decoration">
-				<div class="language-symbols">
-					<span class="symbol">🌍</span>
-					<span class="symbol">📚</span>
-					<span class="symbol">💬</span>
+				<div class="course-grid">
+					{courses.map((course) => <CourseCard {...course} />)}
 				</div>
-			</div>
+			</section>
+
+			<section class="price-panel" aria-labelledby="price-heading">
+				<div>
+					<p class="eyebrow">Просто та прозоро</p>
+					<h2 id="price-heading">Вартість години – 10 євро.</h2>
+				</div>
+				<p>При оплаті абонементом – знижки!</p>
+			</section>
+
+			<section class="contact-panel" aria-labelledby="contact-heading">
+				<div class="contact-copy">
+					<p class="eyebrow">Перший крок</p>
+					<h2 id="contact-heading">Забронюйте собі місце на обраному гуртку прямо зараз!</h2>
+					<p>Напишіть мені назву гуртка в особисті повідомлення.</p>
+					<a class="primary-link" href="https://t.me/vitasilver">Написати в Telegram <span aria-hidden="true">↗</span></a>
+				</div>
+				<div class="contact-details">
+					<p class="contact-prompt">Напишіть мені повідомлення – підберемо ідеальний курс для вас! 💜</p>
+					<ul>
+						<li><span>Telegram</span><a href="https://t.me/vitasilver">@vitasilver</a></li>
+						<li><span>E-Mail</span><a href="mailto:vitasarvirova@gmail.com">vitasarvirova@gmail.com</a></li>
+						<li><span>Website</span><a href="https://sprachimbiss.de/">sprachimbiss.de</a></li>
+						<li><span>WhatsApp / Tel.</span><a href="tel:+4915203977315">+4915203977315</a></li>
+					</ul>
+				</div>
+			</section>
 		</div>
 	</main>
 </Layout>
+
+<style>
+	.courses-page {
+		padding: 8rem 2rem 4rem;
+	}
+
+	.courses-container {
+		max-width: 1200px;
+		margin: 0 auto;
+	}
+
+	.page-intro {
+		max-width: 780px;
+		margin: 0 auto 5rem;
+		text-align: center;
+	}
+
+	.eyebrow {
+		margin-bottom: 0.9rem;
+		color: #667eea;
+		font-size: 0.78rem;
+		font-weight: 500;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+	}
+
+	h1, h2, h3 {
+		font-family: 'Playfair Display', serif;
+	}
+
+	h1 {
+		font-size: clamp(2.6rem, 6vw, 4.8rem);
+		line-height: 1.08;
+		color: #2c3e50;
+	}
+
+	h1 span {
+		display: block;
+		margin-top: 0.55rem;
+		font-size: 0.48em;
+		font-weight: 400;
+		color: #667eea;
+	}
+
+	.intro-message {
+		margin-top: 1.7rem;
+		color: #4a5568;
+		font-size: 1.2rem;
+		font-weight: 300;
+	}
+
+	.section-heading {
+		margin-bottom: 1.8rem;
+	}
+
+	h2 {
+		font-size: clamp(2rem, 4vw, 3rem);
+		line-height: 1.2;
+		color: #2c3e50;
+	}
+
+	.course-grid {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 1.5rem;
+	}
+
+	.price-panel, .contact-panel {
+		margin-top: 5rem;
+		padding: 2.5rem;
+		background: rgba(255, 255, 255, 0.86);
+		border: 1px solid rgba(255, 255, 255, 0.9);
+		border-radius: 15px;
+		box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+	}
+
+	.price-panel {
+		display: flex;
+		align-items: end;
+		justify-content: space-between;
+		gap: 2rem;
+	}
+
+	.price-panel h2 {
+		font-size: clamp(1.7rem, 3vw, 2.4rem);
+	}
+
+	.price-panel > p {
+		color: #667eea;
+		font-size: 1.1rem;
+		font-weight: 500;
+	}
+
+	.contact-panel {
+		display: grid;
+		grid-template-columns: 1.2fr 0.8fr;
+		gap: 4rem;
+		padding: 3rem;
+		background: linear-gradient(135deg, rgba(102, 126, 234, 0.96), rgba(118, 75, 162, 0.96));
+	}
+
+	.contact-panel .eyebrow, .contact-panel h2, .contact-panel p, .contact-panel a, .contact-panel span {
+		color: white;
+	}
+
+	.contact-panel h2 {
+		font-size: clamp(2rem, 4vw, 3rem);
+	}
+
+	.contact-copy > p:not(.eyebrow), .contact-prompt {
+		margin-top: 1.2rem;
+		font-size: 1.05rem;
+	}
+
+	.primary-link {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.6rem;
+		margin-top: 2rem;
+		padding-bottom: 0.3rem;
+		border-bottom: 1px solid rgba(255, 255, 255, 0.7);
+		font-weight: 500;
+		text-decoration: none;
+	}
+
+	.primary-link:hover, .contact-details a:hover {
+		opacity: 0.8;
+	}
+
+	.contact-details ul {
+		margin-top: 1.8rem;
+		padding: 0;
+		list-style: none;
+	}
+
+	.contact-details li {
+		display: flex;
+		justify-content: space-between;
+		gap: 1rem;
+		padding: 0.75rem 0;
+		border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+	}
+
+	.contact-details li span {
+		font-size: 0.9rem;
+		opacity: 0.8;
+	}
+
+	.contact-details a {
+		text-align: right;
+		text-decoration: underline;
+		text-underline-offset: 0.2em;
+	}
+
+	@media (max-width: 768px) {
+		.courses-page {
+			padding: 8rem 1rem 2rem;
+		}
+
+		.page-intro {
+			margin-bottom: 3.5rem;
+		}
+
+		.course-grid, .contact-panel {
+			grid-template-columns: 1fr;
+		}
+
+		.price-panel {
+			align-items: start;
+			flex-direction: column;
+		}
+
+		.price-panel, .contact-panel {
+			margin-top: 3.5rem;
+			padding: 1.75rem;
+		}
+
+		.contact-panel {
+			gap: 2rem;
+		}
+	}
+
+	@media (max-width: 420px) {
+		.contact-details li {
+			align-items: flex-start;
+			flex-direction: column;
+			gap: 0.25rem;
+		}
+
+		.contact-details a {
+			text-align: left;
+		}
+	}
+</style>

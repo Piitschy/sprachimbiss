@@ -1,0 +1,81 @@
+---
+export interface Props {
+	scheduleLabel: string;
+	time?: string;
+	title: string;
+	description: string;
+}
+
+const { scheduleLabel, time, title, description } = Astro.props;
+---
+
+<article class="course-card">
+	<div class="course-schedule">
+		<span class="schedule-label">{scheduleLabel}</span>
+		{time && <span class="schedule-time">{time}</span>}
+	</div>
+	<div class="course-details">
+		<h3>{title}</h3>
+		<p>{description}</p>
+	</div>
+</article>
+
+<style>
+	.course-card {
+		display: grid;
+		grid-template-columns: minmax(150px, 0.7fr) 1.3fr;
+		gap: 2rem;
+		padding: 2rem;
+		background: rgba(255, 255, 255, 0.86);
+		border: 1px solid rgba(255, 255, 255, 0.9);
+		border-radius: 15px;
+		box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+	}
+
+	.course-schedule {
+		display: flex;
+		flex-direction: column;
+		gap: 0.4rem;
+		align-self: start;
+		color: #667eea;
+	}
+
+	.schedule-label {
+		font-size: 0.78rem;
+		font-weight: 700;
+		letter-spacing: 0.08em;
+		line-height: 1.45;
+	}
+
+	.schedule-time {
+		font-family: 'Playfair Display', serif;
+		font-size: 1.35rem;
+		font-weight: 700;
+		color: #2c3e50;
+	}
+
+	.course-details h3 {
+		font-family: 'Playfair Display', serif;
+		font-size: 1.5rem;
+		line-height: 1.25;
+		color: #2c3e50;
+		margin-bottom: 0.85rem;
+	}
+
+	.course-details p {
+		color: #4a5568;
+		line-height: 1.7;
+	}
+
+	@media (max-width: 600px) {
+		.course-card {
+			grid-template-columns: 1fr;
+			gap: 1.1rem;
+			padding: 1.5rem;
+		}
+
+		.course-details h3 {
+			font-size: 1.35rem;
+		}
+	}
+</style>
