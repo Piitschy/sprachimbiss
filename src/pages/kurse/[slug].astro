@@ -1,0 +1,88 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { courses } from '../../data/courses';
+
+export function getStaticPaths() {
+	return courses.map((course) => ({ params: { slug: course.slug }, props: { course } }));
+}
+
+const { course } = Astro.props;
+const title = `${course.titleDe} | Sprachimbiss`;
+---
+
+<Layout lang="uk" title={title} description={course.descriptionDe}>
+	<main class="course-page">
+		<div class="course-container">
+			<a class="back-link" href="/" data-uk="← Назад до всіх курсів" data-de="← Zurück zu allen Kursen">← Назад до всіх курсів</a>
+
+			<section class="course-hero">
+				<div class="hero-copy">
+					<p class="eyebrow" data-uk="Sprachimbiss · твій формат німецької" data-de="Sprachimbiss · dein Deutschformat">Sprachimbiss · твій формат німецької</p>
+					<h1 data-uk={course.title} data-de={course.titleDe}>{course.title}</h1>
+					<p class="lead" data-uk={course.description} data-de={course.descriptionDe}>{course.description}</p>
+				</div>
+				<div class="schedule-card">
+					<span class="schedule-label" data-uk={course.scheduleLabel} data-de={course.scheduleLabelDe}>{course.scheduleLabel}</span>
+					{course.time && <strong>{course.time}</strong>}
+					<span data-uk="Групове заняття" data-de="Gruppenkurs">Групове заняття</span>
+				</div>
+			</section>
+
+			<section class="details-grid" aria-label="Kursdetails">
+				<div class="detail-block">
+					<span class="detail-number">01</span>
+					<h2 data-uk="Що ми робимо" data-de="Was wir machen">Що ми робимо</h2>
+					<p data-uk="Багато говоримо, слухаємо одне одного та крок за кроком робимо німецьку природнішою у повсякденному житті." data-de="Wir sprechen viel, hören einander zu und machen Deutsch Schritt für Schritt natürlicher im Alltag.">Багато говоримо, слухаємо одне одного та крок за кроком робимо німецьку природнішою у повсякденному житті.</p>
+				</div>
+				<div class="detail-block">
+					<span class="detail-number">02</span>
+					<h2 data-uk="Вартість" data-de="Kosten">Вартість</h2>
+					<p><strong>10 €</strong> <span data-uk="за годину уроку" data-de="pro Unterrichtsstunde">за годину уроку</span></p>
+					<p class="muted" data-uk="При оплаті абонементом діють знижки." data-de="Bei Zahlung per Abonnement gibt es Rabatte.">При оплаті абонементом діють знижки.</p>
+				</div>
+			</section>
+
+			<section class="enquiry-panel">
+				<div>
+					<p class="eyebrow" data-uk="Готові почати?" data-de="Bereit loszulegen?">Готові почати?</p>
+					<h2 data-uk="Забронюйте місце у цій групі." data-de="Sichere dir einen Platz in dieser Gruppe.">Забронюйте місце у цій групі.</h2>
+				</div>
+				<a class="primary-link" href="https://t.me/vitasilver"><span data-uk="Написати в Telegram" data-de="Auf Telegram schreiben">Написати в Telegram</span> <span aria-hidden="true">↗</span></a>
+			</section>
+		</div>
+	</main>
+</Layout>
+
+<style>
+	.course-page { padding: 8rem 2rem 4rem; }
+	.course-container { max-width: 1050px; margin: 0 auto; }
+	.back-link { color: #667eea; font-size: 0.9rem; text-decoration: none; }
+	.back-link:hover { text-decoration: underline; }
+	.course-hero { display: grid; grid-template-columns: 1fr 280px; gap: 4rem; align-items: end; padding: 4rem 0 5rem; }
+	.eyebrow { margin-bottom: 0.9rem; color: #667eea; font-size: 0.78rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; }
+	h1, h2 { font-family: 'Playfair Display', serif; color: #2c3e50; }
+	h1 { max-width: 750px; font-size: clamp(2.8rem, 7vw, 5.7rem); line-height: 1.05; }
+	.lead { max-width: 700px; margin-top: 1.8rem; color: #4a5568; font-size: 1.15rem; line-height: 1.8; }
+	.schedule-card { display: flex; flex-direction: column; gap: 0.55rem; padding: 1.7rem; border-top: 4px solid #667eea; background: rgba(255,255,255,0.85); box-shadow: 0 12px 30px rgba(0,0,0,0.08); }
+	.schedule-label { color: #667eea; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; }
+	.schedule-card strong { font-family: 'Playfair Display', serif; font-size: 1.7rem; color: #2c3e50; }
+	.schedule-card span:last-child { color: #718096; font-size: 0.9rem; }
+	.details-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: rgba(102,126,234,0.2); }
+	.detail-block { padding: 2.4rem; background: rgba(255,255,255,0.7); }
+	.detail-number { color: #667eea; font-size: 0.8rem; font-weight: 700; }
+	h2 { margin: 0.7rem 0 0.8rem; font-size: 2rem; }
+	.detail-block p { color: #4a5568; line-height: 1.7; }
+	.detail-block strong { color: #667eea; font-size: 1.7rem; }
+	.detail-block .muted { margin-top: 0.4rem; color: #718096; font-size: 0.9rem; }
+	.enquiry-panel { display: flex; align-items: center; justify-content: space-between; gap: 2rem; margin-top: 5rem; padding: 2.7rem 3rem; border-radius: 15px; background: linear-gradient(135deg, rgba(102,126,234,0.96), rgba(118,75,162,0.96)); }
+	.enquiry-panel h2, .enquiry-panel .eyebrow { color: white; }
+	.enquiry-panel h2 { margin: 0; }
+	.primary-link { padding-bottom: 0.3rem; border-bottom: 1px solid rgba(255,255,255,0.7); color: white; text-decoration: none; white-space: nowrap; }
+	.primary-link:hover { opacity: 0.8; }
+	@media (max-width: 700px) {
+		.course-page { padding: 8rem 1rem 2rem; }
+		.course-hero, .details-grid { grid-template-columns: 1fr; }
+		.course-hero { gap: 2rem; padding: 3rem 0 3.5rem; }
+		.enquiry-panel { align-items: flex-start; flex-direction: column; margin-top: 3.5rem; padding: 2rem 1.5rem; }
+	}
+</style>

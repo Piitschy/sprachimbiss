@@ -7,12 +7,13 @@ export interface Props {
 	scheduleLabelDe: string;
 	titleDe: string;
 	descriptionDe: string;
+	slug: string;
 }
 
-const { scheduleLabel, time, title, description, scheduleLabelDe, titleDe, descriptionDe } = Astro.props;
+const { scheduleLabel, time, title, description, scheduleLabelDe, titleDe, descriptionDe, slug } = Astro.props;
 ---
 
-<article class="course-card">
+<a class="course-card" href={`/kurse/${slug}/`}>
 	<div class="course-schedule">
 		<span class="schedule-label" data-uk={scheduleLabel} data-de={scheduleLabelDe}>{scheduleLabel}</span>
 		{time && <span class="schedule-time">{time}</span>}
@@ -20,8 +21,9 @@ const { scheduleLabel, time, title, description, scheduleLabelDe, titleDe, descr
 	<div class="course-details">
 		<h3 data-uk={title} data-de={titleDe}>{title}</h3>
 		<p data-uk={description} data-de={descriptionDe}>{description}</p>
+		<span class="course-link" data-uk="Дізнатися більше" data-de="Mehr erfahren">Дізнатися більше <span aria-hidden="true">↗</span></span>
 	</div>
-</article>
+</a>
 
 <style>
 	.course-card {
@@ -33,6 +35,18 @@ const { scheduleLabel, time, title, description, scheduleLabelDe, titleDe, descr
 		border: 1px solid rgba(255, 255, 255, 0.9);
 		border-radius: 15px;
 		box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+		text-decoration: none;
+		transition: transform 0.25s ease, box-shadow 0.25s ease;
+	}
+
+	.course-card:hover, .course-card:focus-visible {
+		transform: translateY(-4px);
+		box-shadow: 0 16px 35px rgba(70, 76, 130, 0.16);
+	}
+
+	.course-card:focus-visible {
+		outline: 3px solid rgba(102, 126, 234, 0.45);
+		outline-offset: 4px;
 	}
 
 	.course-schedule {
@@ -68,6 +82,15 @@ const { scheduleLabel, time, title, description, scheduleLabelDe, titleDe, descr
 	.course-details p {
 		color: #4a5568;
 		line-height: 1.7;
+	}
+
+	.course-link {
+		display: inline-flex;
+		gap: 0.45rem;
+		margin-top: 1.25rem;
+		color: #667eea;
+		font-size: 0.9rem;
+		font-weight: 500;
 	}
 
 	@media (max-width: 600px) {
