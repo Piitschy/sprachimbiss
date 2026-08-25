@@ -4,19 +4,22 @@ export interface Props {
 	time?: string;
 	title: string;
 	description: string;
+	scheduleLabelDe: string;
+	titleDe: string;
+	descriptionDe: string;
 }
 
-const { scheduleLabel, time, title, description } = Astro.props;
+const { scheduleLabel, time, title, description, scheduleLabelDe, titleDe, descriptionDe } = Astro.props;
 ---
 
 <article class="course-card">
 	<div class="course-schedule">
-		<span class="schedule-label">{scheduleLabel}</span>
+		<span class="schedule-label" data-uk={scheduleLabel} data-de={scheduleLabelDe}>{scheduleLabel}</span>
 		{time && <span class="schedule-time">{time}</span>}
 	</div>
 	<div class="course-details">
-		<h3>{title}</h3>
-		<p>{description}</p>
+		<h3 data-uk={title} data-de={titleDe}>{title}</h3>
+		<p data-uk={description} data-de={descriptionDe}>{description}</p>
 	</div>
 </article>
 

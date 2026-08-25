@@ -27,23 +27,50 @@ const { title = "Sprachimbiss - Vita Sarvirova", description = "Professioneller 
 			<div class="nav-container">
 				<div class="nav-logo">Sprachimbiss</div>
 				<div class="nav-menu">
-					<a href="/" class="nav-link active">Start</a>
-          <a href="/impressum/" class="nav-link">Impressum</a>
+					<a href="/" class="nav-link active" data-uk="Головна" data-de="Start">Головна</a>
+          <a href="/impressum/" class="nav-link" data-uk="Імпресум" data-de="Impressum">Імпресум</a>
+					<label class="language-picker">
+						<span class="sr-only">Мова / Sprache</span>
+						<select aria-label="Мова / Sprache" data-language-picker>
+							<option value="uk">Українська</option>
+							<option value="de">Deutsch</option>
+						</select>
+					</label>
 				</div>
 			</div>
 		</nav>
 		<slot />
 		<footer class="footer">
 			<div class="footer-container">
-				<p>&copy; 2026 Sprachimbiss Vita Sarvirova. Alle Rechte vorbehalten.</p>
+				<p data-uk="© 2026 Sprachimbiss Vita Sarvirova. Усі права захищені." data-de="© 2026 Sprachimbiss Vita Sarvirova. Alle Rechte vorbehalten.">&copy; 2026 Sprachimbiss Vita Sarvirova. Усі права захищені.</p>
 				<div class="footer-links">
-          <a href="/impressum/">Impressum</a>
-					<a href="/impressum#datenschutz">Datenschutz</a>
+					<a href="/impressum/" data-uk="Імпресум" data-de="Impressum">Імпресум</a>
+					<a href="/impressum#datenschutz" data-uk="Захист даних" data-de="Datenschutz">Захист даних</a>
 				</div>
 			</div>
 		</footer>
 	</body>
 </html>
+
+<script>
+	const picker = document.querySelector('[data-language-picker]');
+	const language = localStorage.getItem('sprachimbiss-language') || 'uk';
+
+	function setLanguage(nextLanguage) {
+		const selectedLanguage = nextLanguage === 'de' ? 'de' : 'uk';
+		document.documentElement.lang = selectedLanguage;
+		localStorage.setItem('sprachimbiss-language', selectedLanguage);
+		document.querySelectorAll('[data-uk][data-de]').forEach((element) => {
+			element.textContent = element.dataset[selectedLanguage] || '';
+		});
+		if (picker) picker.value = selectedLanguage;
+	}
+
+	picker?.addEventListener('change', (event) => {
+		setLanguage(event.target.value);
+	});
+	setLanguage(language);
+</script>
 
 <style is:global>
 	* {
@@ -89,7 +116,31 @@ const { title = "Sprachimbiss - Vita Sarvirova", description = "Professioneller 
 
 	.nav-menu {
 		display: flex;
+		align-items: center;
 		gap: 2rem;
+	}
+
+	.language-picker select {
+		padding: 0.4rem 0.65rem;
+		border: 1px solid #d9def0;
+		border-radius: 999px;
+		background: white;
+		color: #4a5568;
+		font: inherit;
+		font-size: 0.85rem;
+		cursor: pointer;
+	}
+
+	.sr-only {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		padding: 0;
+		margin: -1px;
+		overflow: hidden;
+		clip: rect(0, 0, 0, 0);
+		white-space: nowrap;
+		border: 0;
 	}
 
 	.nav-link {
@@ -261,6 +312,8 @@ const { title = "Sprachimbiss - Vita Sarvirova", description = "Professioneller 
 
 		.nav-menu {
 			gap: 1rem;
+			flex-wrap: wrap;
+			justify-content: center;
 		}
 
 		.hero {

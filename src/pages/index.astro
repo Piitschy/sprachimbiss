@@ -5,26 +5,38 @@ import CourseCard from '../components/CourseCard.astro';
 const courses = [
 	{
 		scheduleLabel: 'ПОНЕДІЛОК АБО СЕРЕДА',
+		scheduleLabelDe: 'MONTAG ODER MITTWOCH',
 		time: '16:00 – 17:20',
 		title: 'Граматичний розмовний гурток B1+/B2',
+		titleDe: 'Grammatischer Gesprächskurs B1+/B2',
 		description: 'Для тих, хто вже вчив B1+/B2 і під час розмови хотів би ширше використовувати набуті теоретичні знання. Тут не просто повторюють важливі конструкції, а вчаться автоматично використовувати їх у спонтанних розмовах на цікаві теми 🙂',
+		descriptionDe: 'Für alle, die B1+/B2 gelernt haben und ihre theoretischen Kenntnisse im Gespräch sicherer anwenden möchten. Wir üben wichtige Strukturen und verwenden sie automatisch in spontanen Gesprächen über interessante Themen 🙂',
 	},
 	{
 		scheduleLabel: 'СЕРЕДА',
+		scheduleLabelDe: 'MITTWOCH',
 		time: '14:30 – 15:50',
 		title: 'Розмовна група В1 (DTZ / telc)',
+		titleDe: 'Gesprächsgruppe B1 (DTZ / telc)',
 		description: 'Тренуємо опис картинок і діалоги у форматі іспитів DTZ / telc, комбінуючи з граматикою та вивченням слів. На учасників чекають корисні стратегії, багато говоріння та позитивна компанія ✨',
+		descriptionDe: 'Wir trainieren Bildbeschreibungen und Dialoge im Format der Prüfungen DTZ / telc, kombiniert mit Grammatik und Wortschatz. Dich erwarten hilfreiche Strategien, viel Sprechen und eine positive Gruppe ✨',
 	},
 	{
 		scheduleLabel: 'П’ЯТНИЦЯ',
+		scheduleLabelDe: 'FREITAG',
 		time: '15:00 – 16:20',
 		title: 'В1+/В2 молодіжний розмовний гурток (до 25 років)',
+		titleDe: 'Jugendlicher Gesprächskurs B1+/B2 (bis 25 Jahre)',
 		description: 'За обговоренням актуальних тем з однолітками ти забудеш, що це урок німецької, і прокачаєш розмовні навички із задоволенням :) ☀️ Фокус на спонтанному говорінні, яке поєднується з граматикою та лексикою.',
+		descriptionDe: 'Beim Austausch über aktuelle Themen mit Gleichaltrigen vergisst du, dass es Deutschunterricht ist, und verbesserst deine Sprechfertigkeit mit Freude :) ☀️ Der Fokus liegt auf spontaner Kommunikation, kombiniert mit Grammatik und Wortschatz.',
 	},
 	{
 		scheduleLabel: 'З СЕРЕДИНИ ВЕРЕСНЯ',
+		scheduleLabelDe: 'AB MITTE SEPTEMBER',
 		title: 'Групові заняття для дітей 10–12 років (рівень ±A2)',
+		titleDe: 'Gruppenunterricht für Kinder von 10–12 Jahren (Niveau etwa A2)',
 		description: 'Працюємо насамперед над лексикою та розмовними навичками. Це вже більш системний курс: із домашніми завданнями, вправами та бажаним регулярним відвідуванням. 📚',
+		descriptionDe: 'Wir arbeiten vor allem an Wortschatz und Sprechfertigkeit. Das ist ein systematischer Kurs mit Hausaufgaben, Übungen und möglichst regelmäßiger Teilnahme. 📚',
 	},
 ];
 ---
@@ -34,14 +46,14 @@ const courses = [
 		<div class="courses-container">
 			<header class="page-intro">
 				<p class="eyebrow">Sprachimbiss · Deutsch mit Genuss</p>
-				<h1>Курси німецької мови <span>для дорослих та дітей</span></h1>
-				<p class="intro-message">Запускаємо нові формати щомісяця – знайди свій!</p>
+				<h1><span class="title-main" data-uk="Курси німецької мови" data-de="Deutschkurse">Курси німецької мови</span><span data-uk="для дорослих та дітей" data-de="für Erwachsene und Kinder">для дорослих та дітей</span></h1>
+				<p class="intro-message" data-uk="Запускаємо нові формати щомісяця – знайди свій!" data-de="Wir starten jeden Monat neue Formate – finde deinen Kurs!">Запускаємо нові формати щомісяця – знайди свій!</p>
 			</header>
 
 			<section class="schedule-section" aria-labelledby="schedule-heading">
 				<div class="section-heading">
-					<p class="eyebrow">Разом говоримо впевненіше</p>
-					<h2 id="schedule-heading">Розклад групових занять на вересень</h2>
+					<p class="eyebrow" data-uk="Разом говоримо впевненіше" data-de="Gemeinsam sicherer sprechen">Разом говоримо впевненіше</p>
+					<h2 id="schedule-heading" data-uk="Розклад групових занять на вересень" data-de="Stundenplan der Gruppenkurse im September">Розклад групових занять на вересень</h2>
 				</div>
 				<div class="course-grid">
 					{courses.map((course) => <CourseCard {...course} />)}
@@ -50,22 +62,22 @@ const courses = [
 
 			<section class="price-panel" aria-labelledby="price-heading">
 				<div>
-					<p class="eyebrow">Просто та прозоро</p>
-					<h2 id="price-heading">Вартість години уроку – 10 євро.</h2>
+					<p class="eyebrow" data-uk="Просто та прозоро" data-de="Einfach und transparent">Просто та прозоро</p>
+					<h2 id="price-heading" data-uk="Вартість години уроку – 10 євро." data-de="Eine Unterrichtsstunde kostet 10 Euro.">Вартість години уроку – 10 євро.</h2>
 				</div>
-				<p>При оплаті абонементом діють знижки!</p>
+				<p data-uk="При оплаті абонементом діють знижки!" data-de="Bei Zahlung per Abonnement gibt es Rabatte!">При оплаті абонементом діють знижки!</p>
 			</section>
 
 			<section class="contact-panel" aria-labelledby="contact-heading">
 				<div class="contact-copy">
-					<p class="eyebrow">Перший крок</p>
-					<h2 id="contact-heading">Забронюйте собі місце на обраному гуртку прямо зараз!</h2>
-					<p>Напишіть мені назву гуртка в особисті повідомлення.</p>
-					<p>З жовтня запускатимемо й інші формати та заняття – зв'яжіться зі мною, щоб знайти ідеальну пропозицію саме для Вас🇩🇪</p>
-					<a class="primary-link" href="https://t.me/vitasilver">Написати в Telegram <span aria-hidden="true">↗</span></a>
+					<p class="eyebrow" data-uk="Перший крок" data-de="Der erste Schritt">Перший крок</p>
+					<h2 id="contact-heading" data-uk="Забронюйте собі місце на обраному гуртку прямо зараз!" data-de="Sichere dir jetzt einen Platz in deinem Wunschkurs!">Забронюйте собі місце на обраному гуртку прямо зараз!</h2>
+					<p data-uk="Напишіть мені назву гуртка в особисті повідомлення." data-de="Schreib mir den Namen des Kurses als persönliche Nachricht.">Напишіть мені назву гуртка в особисті повідомлення.</p>
+					<p data-uk="З жовтня запускатимемо й інші формати та заняття – зв'яжіться зі мною, щоб знайти ідеальну пропозицію саме для Вас🇩🇪" data-de="Ab Oktober starten weitere Formate und Kurse. Schreib mir, damit wir das ideale Angebot für dich finden 🇩🇪">З жовтня запускатимемо й інші формати та заняття – зв'яжіться зі мною, щоб знайти ідеальну пропозицію саме для Вас🇩🇪</p>
+					<a class="primary-link" href="https://t.me/vitasilver"><span data-uk="Написати в Telegram" data-de="Auf Telegram schreiben">Написати в Telegram</span> <span aria-hidden="true">↗</span></a>
 				</div>
 				<div class="contact-details">
-					<p class="contact-prompt">Напишіть мені повідомлення – підберемо ідеальний курс для вас! 💜</p>
+					<p class="contact-prompt" data-uk="Напишіть мені повідомлення – підберемо ідеальний курс для вас! 💜" data-de="Schreib mir eine Nachricht – wir finden den idealen Kurs für dich! 💜">Напишіть мені повідомлення – підберемо ідеальний курс для вас! 💜</p>
 					<ul>
 						<li><span>Telegram</span><a href="https://t.me/vitasilver">@vitasilver</a></li>
 						<li><span>E-Mail</span><a href="mailto:vita@sprachimbiss.de">vita@sprachimbiss.de</a></li>
@@ -119,6 +131,13 @@ const courses = [
 		font-size: 0.48em;
 		font-weight: 400;
 		color: #667eea;
+	}
+
+	h1 .title-main {
+		margin-top: 0;
+		font-size: 1em;
+		font-weight: 700;
+		color: #2c3e50;
 	}
 
 	.intro-message {
