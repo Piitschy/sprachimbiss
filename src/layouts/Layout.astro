@@ -7,6 +7,7 @@ export interface Props {
 
 const { title = "Sprachimbiss - Vita Sarvirova", description = "Professioneller Online-Sprachunterricht", lang = "de" } = Astro.props;
 const isHomePage = Astro.url.pathname === '/';
+const isCoursePage = Astro.url.pathname.startsWith('/kurse/');
 ---
 
 <!doctype html>
@@ -29,7 +30,7 @@ const isHomePage = Astro.url.pathname === '/';
 				<div class="nav-logo">Sprachimbiss</div>
 				<div class="nav-menu">
 					<a href="/" class:list={["nav-link", { active: isHomePage }]} data-uk="Головна" data-de="Start">Головна</a>
-          <a href="/impressum/" class:list={["nav-link", { active: !isHomePage }]} data-uk="Імпресум" data-de="Impressum">Імпресум</a>
+          <a href="/impressum/" class:list={["nav-link", { active: !isHomePage && !isCoursePage }]} data-uk="Імпресум" data-de="Impressum">Імпресум</a>
 					<div class="language-picker" aria-label="Мова / Sprache">
 						<button type="button" data-language="uk">UA</button>
 						<span aria-hidden="true">|</span>
