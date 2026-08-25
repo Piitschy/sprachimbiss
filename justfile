@@ -14,7 +14,7 @@ default:
     @echo '  run             Run the container locally'
     @echo '  login           Login to GitHub Container Registry'
     @echo '  push            Build and push to GitHub Container Registry'
-    @echo '  deploy          Alias for push command'
+    @echo '  deploy          Bump patch version, tag and push release'
     @echo '  pull            Pull the latest image from GitHub Container Registry'
     @echo '  run-tagged TAG  Run with specific tag (use: just run-tagged v1.0.0)'
     @echo '  dev             Run development container with mounted volumes'
@@ -51,8 +51,9 @@ push: login build
     docker push {{FULL_IMAGE_NAME}}
     @echo "Push completed: {{FULL_IMAGE_NAME}}"
 
-# Build and push (shortcut)
-deploy: push
+# Create and push a release tag. The tag triggers the GitHub Actions image build.
+deploy:
+    node scripts/release.mjs
 
 # Pull latest image
 pull:
