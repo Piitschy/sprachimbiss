@@ -29,13 +29,11 @@ const { title = "Sprachimbiss - Vita Sarvirova", description = "Professioneller 
 				<div class="nav-menu">
 					<a href="/" class="nav-link active" data-uk="Головна" data-de="Start">Головна</a>
           <a href="/impressum/" class="nav-link" data-uk="Імпресум" data-de="Impressum">Імпресум</a>
-					<label class="language-picker">
-						<span class="sr-only">Мова / Sprache</span>
-						<select aria-label="Мова / Sprache" data-language-picker>
-							<option value="uk">Українська</option>
-							<option value="de">Deutsch</option>
-						</select>
-					</label>
+					<div class="language-picker" aria-label="Мова / Sprache">
+						<button type="button" data-language="uk">UA</button>
+						<span aria-hidden="true">|</span>
+						<button type="button" data-language="de">DE</button>
+					</div>
 				</div>
 			</div>
 		</nav>
@@ -53,7 +51,7 @@ const { title = "Sprachimbiss - Vita Sarvirova", description = "Professioneller 
 </html>
 
 <script>
-	const picker = document.querySelector('[data-language-picker]');
+	const languageButtons = document.querySelectorAll('[data-language]');
 	const language = localStorage.getItem('sprachimbiss-language') || 'uk';
 
 	function setLanguage(nextLanguage) {
@@ -63,11 +61,15 @@ const { title = "Sprachimbiss - Vita Sarvirova", description = "Professioneller 
 		document.querySelectorAll('[data-uk][data-de]').forEach((element) => {
 			element.textContent = element.dataset[selectedLanguage] || '';
 		});
-		if (picker) picker.value = selectedLanguage;
+		languageButtons.forEach((button) => {
+			button.classList.toggle('active', button.dataset.language === selectedLanguage);
+		});
 	}
 
-	picker?.addEventListener('change', (event) => {
-		setLanguage(event.target.value);
+	languageButtons.forEach((button) => {
+		button.addEventListener('click', () => {
+			setLanguage(button.dataset.language);
+		});
 	});
 	setLanguage(language);
 </script>
@@ -120,15 +122,28 @@ const { title = "Sprachimbiss - Vita Sarvirova", description = "Professioneller 
 		gap: 2rem;
 	}
 
-	.language-picker select {
-		padding: 0.4rem 0.65rem;
-		border: 1px solid #d9def0;
-		border-radius: 999px;
-		background: white;
-		color: #4a5568;
-		font: inherit;
+	.language-picker {
+		display: flex;
+		align-items: center;
+		gap: 0.4rem;
+		color: #a0aec0;
 		font-size: 0.85rem;
+	}
+
+	.language-picker button {
+		padding: 0;
+		border: 0;
+		background: transparent;
+		color: #a0aec0;
+		font: inherit;
+		font-weight: 500;
 		cursor: pointer;
+		transition: color 0.3s ease;
+	}
+
+	.language-picker button:hover,
+	.language-picker button.active {
+		color: #667eea;
 	}
 
 	.sr-only {
