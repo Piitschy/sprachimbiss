@@ -61,5 +61,5 @@ jobs:
             exit 1
           fi
 
-          curl --fail --silent --show-error --insecure --retry 3 --retry-delay 2 \
+          curl --fail --silent --show-error --insecure --request POST --retry 3 --retry-delay 2 \
             "${PORTAINER_WEBHOOK}?VERSION=${VERSION_TAG}"
