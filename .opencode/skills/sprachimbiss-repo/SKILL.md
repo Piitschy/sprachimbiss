@@ -39,7 +39,7 @@ Use this skill for changes to the Sprachimbiss project. Work from the repository
 
 - Use `just deploy` for a release. It increments the patch version in `package.json`, creates a release commit, creates the annotated `vX.Y.Z` tag, and pushes the current commit and tag to `origin`.
 - `just deploy` is implemented in `scripts/release.mjs` and uses Node.js rather than Bash, so it works from Windows, macOS, and Linux.
-- `package.json` must not have uncommitted changes before running `just deploy`.
+- `just deploy` commits any pending working-tree changes before creating the release commit and tag.
 - The release tag starts the `.github/workflows/publish-image.yml` workflow. Do not manually push the versioned image as part of the normal release flow.
 - Do not run `just deploy` during implementation or tests unless the user explicitly requests a release; it changes Git history and pushes to the remote.
 

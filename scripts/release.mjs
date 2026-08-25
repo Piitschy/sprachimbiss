@@ -9,11 +9,6 @@ function git(...args) {
   return execFileSync("git", args, { encoding: "utf8", stdio: ["ignore", "pipe", "inherit"] }).trim();
 }
 
-if (git("status", "--porcelain", "--", "package.json")) {
-  console.error("package.json has uncommitted changes; refusing to release.");
-  process.exit(1);
-}
-
 const match = /^(\d+)\.(\d+)\.(\d+)$/.exec(currentVersion);
 if (!match) {
   console.error(`Invalid package version: ${currentVersion}`);
@@ -28,13 +23,17 @@ if (git("tag", "--list", nextTag) === nextTag) {
   process.exit(1);
 }
 
+if (git("status", "--porcelain")) {
+  git("add", "--all");
+  git("commit", "-m", "chore: commit pending changes");
+}
+
 packageJson.version = nextVersion;
 fs.writeFileSync(packagePath, `${JSON.stringify(packageJson, null, 2)}\n`);
 
 git("add", "package.json");
 git("commit", "-m", `chore: release ${nextTag}`);
 git("tag", "--annotate", nextTag, "--message", `Release ${nextTag}`);
-git("push", "origin", "HEAD");
-git("push", "origin", nextTag);
+git("push", "--follow-tags", "origin", "HEAD");
 
 console.log(`Release ${nextTag} pushed. GitHub Actions will build ghcr.io/piitschy/sprachimbiss:${nextVersion}.`);
